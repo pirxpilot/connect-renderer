@@ -1,0 +1,36 @@
+{
+  "name": "connect-renderer",
+  "version": "0.0.0",
+  "description": "Connect compatible implementation of template renderer.",
+  "author": {
+    "name": "Damian Krzeminski",
+    "email": "pirxpilot@furkot.com",
+    "url": "https://pirxpilot.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/connect-renderer.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "connect-renderer",
+    "connect",
+    "express",
+    "render",
+    "template",
+    "jade",
+    "pug",
+    "handlebars"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@pirxpilot/jshint": "~3"
+  },
+  "scripts": {
+    "test": "make check"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ]
+}
