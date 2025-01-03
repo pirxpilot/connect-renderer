@@ -22,7 +22,9 @@
     "pug",
     "handlebars"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "debug": "~4"
+  },
   "devDependencies": {
     "@pirxpilot/jshint": "~3"
   },

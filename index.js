@@ -1,1 +1,1 @@
-module.exports = require('./lib/connect-renderer');
+module.exports = require('./lib/renderer');
