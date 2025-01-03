@@ -1,6 +1,6 @@
 {
   "name": "connect-renderer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Connect compatible implementation of template renderer.",
   "author": {
     "name": "Damian Krzeminski",
