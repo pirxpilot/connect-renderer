@@ -9,8 +9,10 @@ test('view renderes existing template', async t => {
   const TEXT = 'rendered text';
   const render = t.mock.fn(() => TEXT);
   const engine = {
-    compile: async() => render
+    compile: async () => render
   };
+
+  t.afterEach(() => render.mock.resetCalls());
 
   await t.test('no ext', async () => {
     const view = makeView('one', {
@@ -20,7 +22,6 @@ test('view renderes existing template', async t => {
         '.pug': engine
       }
     });
-    render.mock.resetCalls();
     t.mock.method(engine, 'compile');
     assert.equal(await view.render(), TEXT);
     assert.equal(engine.compile.mock.callCount(), 1);
@@ -31,6 +32,27 @@ test('view renderes existing template', async t => {
     assert.equal(engine.compile.mock.callCount(), 1);
     assert.equal(render.mock.callCount(), 2);
     assert.deepEqual(render.mock.calls[1].arguments, [{ option: 4 }]);
+  });
+
+  await t.test('engine options', async () => {
+    const pug = {
+      compile: () => render,
+      options: { pretty: true }
+    };
+    const view = makeView('one', {
+      root: ROOT,
+      defaultEngine: 'pug',
+      engines: {
+        '.pug': pug
+      }
+    });
+    t.mock.method(pug, 'compile');
+    assert.equal(await view.render(), TEXT);
+    assert.equal(pug.compile.mock.callCount(), 1);
+    assert.deepEqual(pug.compile.mock.calls[0].arguments[1], {
+      pretty: true,
+      filename: join(ROOT, 'one.pug')
+    });
   });
 
   await t.test('no defaultEngine', async () => {
