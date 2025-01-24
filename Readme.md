@@ -17,9 +17,23 @@ $ npm install --save connect-renderer
 ## Usage
 
 ```js
-var connectRenderer = require('connect-renderer');
+const connect = require('connect');
+const app = connect();
+const renderer = require('connect-renderer');
 
-connectRenderer('Rainbow');
+app.use(renderer(VIEWS_DIR).engine('pug', {
+  compile: require('pug').compile,
+  options: {
+    // all options are passed to `compile` function
+    compileDebug: process.env.NODE_ENV !== 'production'
+  }
+}));
+
+app.use('/page', (req, res) => {
+  // req.app.locals and res.locals are merged with options passed to `render`
+  res.render('page', { title: 'Page'});
+})
+
 ```
 
 ## License
