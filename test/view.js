@@ -5,7 +5,7 @@ const { join } = require('node:path');
 
 const ROOT = join(__dirname, 'fixtures');
 
-test('view renderes existing template', async t => {
+test('view renders existing template', async t => {
   const TEXT = 'rendered text';
   const render = t.mock.fn(() => TEXT);
   const engine = {
