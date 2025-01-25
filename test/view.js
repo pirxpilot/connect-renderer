@@ -76,22 +76,31 @@ test('view renders existing template', async t => {
   });
 
   await t.test('no defaultEngine and now ext', () => {
-    assert.throws(() => makeView('one', {
-      root: ROOT,
-      engines: {
-        '.pug': engine
+    assert.throws(
+      () =>
+        makeView('one', {
+          root: ROOT,
+          engines: {
+            '.pug': engine
+          }
+        }),
+      {
+        message:
+          'No default engine was specified and no extension was provided.'
       }
-    }), { message: 'No default engine was specified and no extension was provided.' });
+    );
   });
 
   await t.test('no matching engine', () => {
-    assert.throws(() => makeView('one.hbs', {
-      root: ROOT,
-      engines: {
-        '.pug': engine
-      }
-    }), { message: 'Engine not found for the ".hbs" file extension' });
+    assert.throws(
+      () =>
+        makeView('one.hbs', {
+          root: ROOT,
+          engines: {
+            '.pug': engine
+          }
+        }),
+      { message: 'Engine not found for the ".hbs" file extension' }
+    );
   });
 });
-
-

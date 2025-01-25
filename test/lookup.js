@@ -12,7 +12,7 @@ test('lookup should return the full path to the view', async () => {
 
 test('lookup should return the full path to the view with multiple roots', async () => {
   const root2 = join(ROOT, 'alfa');
-  const p = await lookup('two.hbs', { root: [ ROOT, root2 ], ext: '.hbs' });
+  const p = await lookup('two.hbs', { root: [ROOT, root2], ext: '.hbs' });
   assert.equal(p, resolve(root2, 'two.hbs'));
 });
 
