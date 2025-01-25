@@ -7,6 +7,9 @@ format:
 	./node_modules/.bin/biome format --write
 
 test:
-	node --test
+	node --test $(TEST_OPTS)
 
-.PHONY: check lint format test
+test-cov: TEST_OPTS := --experimental-test-coverage
+test-cov: test
+
+.PHONY: check lint format test test-cov
