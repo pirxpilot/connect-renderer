@@ -85,8 +85,7 @@ test('view renders existing template', async t => {
           }
         }),
       {
-        message:
-          'No default engine was specified and no extension was provided.'
+        message: 'No default engine was specified and no extension was provided.'
       }
     );
   });

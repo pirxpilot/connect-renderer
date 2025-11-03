@@ -33,6 +33,6 @@
     "lib"
   ],
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
+    "@biomejs/biome": "2.3.x"
   }
 }
