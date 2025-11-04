@@ -1,9 +1,9 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const { lookup } = require('../lib/lookup');
-const { join, resolve } = require('node:path');
+import assert from 'node:assert/strict';
+import { join, resolve } from 'node:path';
+import test from 'node:test';
+import { lookup } from '../lib/lookup.js';
 
-const ROOT = join(__dirname, 'fixtures');
+const ROOT = resolve(import.meta.dirname, 'fixtures');
 
 test('lookup should return the full path to the view', async () => {
   const p = await lookup('one.pug', { root: ROOT, ext: '.pug' });

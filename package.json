@@ -11,6 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/pirxpilot/connect-renderer.git"
   },
+  "exports": "./lib/renderer.js",
+  "type": "module",
   "license": "MIT",
   "keywords": [
     "connect-renderer",
@@ -29,10 +31,9 @@
     "test": "make check"
   },
   "files": [
-    "index.js",
     "lib"
   ],
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
+    "@biomejs/biome": "2.3.x"
   }
 }

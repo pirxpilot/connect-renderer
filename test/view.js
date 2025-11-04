@@ -1,9 +1,9 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const makeView = require('../lib/view');
-const { join } = require('node:path');
+import assert from 'node:assert/strict';
+import { join } from 'node:path';
+import test from 'node:test';
+import makeView from '../lib/view.js';
 
-const ROOT = join(__dirname, 'fixtures');
+const ROOT = join(import.meta.dirname, 'fixtures');
 
 test('view renders existing template', async t => {
   const TEXT = 'rendered text';
@@ -85,8 +85,7 @@ test('view renders existing template', async t => {
           }
         }),
       {
-        message:
-          'No default engine was specified and no extension was provided.'
+        message: 'No default engine was specified and no extension was provided.'
       }
     );
   });

@@ -1,9 +1,9 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const makeRenderer = require('..');
-const { join } = require('node:path');
+import assert from 'node:assert/strict';
+import { resolve } from 'node:path';
+import test from 'node:test';
+import makeRenderer from '../lib/renderer.js';
 
-const ROOT = join(__dirname, 'fixtures');
+const ROOT = resolve(import.meta.dirname, 'fixtures');
 
 test('renderer should be a middleware', (t, done) => {
   const TEXT = 'rendered tęxt';
@@ -53,23 +53,15 @@ test('renderer should be a middleware', (t, done) => {
     assert.deepEqual(res.end.mock.calls[1].arguments, [TEXT]);
 
     assert.equal(render.mock.callCount(), 2);
-    assert.deepEqual(render.mock.calls[1].arguments, [
-      { option: 3, resOpt: true, appOpt: true }
-    ]);
+    assert.deepEqual(render.mock.calls[1].arguments, [{ option: 3, resOpt: true, appOpt: true }]);
     assert.equal(engine.compile.mock.callCount(), 1);
 
     t.mock.method(res, 'setHeader');
     t.mock.method(res, 'hasHeader', () => false);
     await res.render('alfa');
     assert.equal(res.setHeader.mock.callCount(), 2);
-    assert.deepEqual(res.setHeader.mock.calls[0].arguments, [
-      'Content-Type',
-      'text/html'
-    ]);
-    assert.deepEqual(res.setHeader.mock.calls[1].arguments, [
-      'Content-Length',
-      14
-    ]);
+    assert.deepEqual(res.setHeader.mock.calls[0].arguments, ['Content-Type', 'text/html']);
+    assert.deepEqual(res.setHeader.mock.calls[1].arguments, ['Content-Length', 14]);
 
     done();
   });
