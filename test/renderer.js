@@ -1,9 +1,9 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const makeRenderer = require('..');
-const { join } = require('node:path');
+import assert from 'node:assert/strict';
+import { resolve } from 'node:path';
+import test from 'node:test';
+import makeRenderer from '../lib/renderer.js';
 
-const ROOT = join(__dirname, 'fixtures');
+const ROOT = resolve(import.meta.dirname, 'fixtures');
 
 test('renderer should be a middleware', (t, done) => {
   const TEXT = 'rendered tęxt';
